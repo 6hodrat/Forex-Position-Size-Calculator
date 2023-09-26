@@ -1,0 +1,109 @@
+body{
+    background-color: #f2f2f2;
+    font-size: 16px;
+    width:370px;
+    margin: auto;
+
+    
+}
+.body_fa{
+        font-family:vazirmatn;
+    font-weight:600
+}
+.main {
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    background-color:white;
+    border-radius:0px 0px 5px 5px;
+    border-bottom:1px solid black;
+    border-right:1px solid black;
+    border-left:1px solid black;
+}
+header{
+    background-color:#4c8fff;
+    color:white;
+    border-radius:5px 5px 0px 0px;
+    border-right:1px solid black;
+    border-left:1px solid black;
+    border-top:1px solid black;
+    
+}
+nav{
+    text-align:center;
+    padding:4px;
+    padding-right:12px;
+}
+
+
+.hname{
+    font-weight:1000;
+}
+
+.hc{
+    display:grid;
+    grid-template-columns: 50px auto 10px;
+    
+}
+
+.hbtn{
+    color:white;
+}
+.hbtn:hover{
+    font-weight:1000;
+}
+
+a{
+    text-decoration:none;
+}
+section{
+    display:grid;
+    grid-template-columns: 250px 80px;
+    align-content: center;
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:5px;
+    padding-top:5px;
+    
+}
+input{
+    text-align: center;
+}
+.fa{
+    direction: rtl;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.res{
+    display:none;
+}
+.subbtng{
+  grid-template-columns: 170px;
+  justify-content: center;
+}
+.subbtn{
+  background-color:#4c8fff;
+  color:white;
+  border:0px;
+  height:30px;
+  border-radius:25px;
+  font-weight:600;
+}
+.subbtn:hover{
+  transition:color 0.1s ease-out,background-color 0.1s ease-out;
+  color:#4c8fff;
+  background-color:white;
+  border:3px solid #4c8fff;
+}
+.xbtn{
+  color:white;
+  padding:0px;
+  margin:0px;
+  font-weight:1000;
+}
+.github{
+  width:24px;
+  padding-left:10px
+}

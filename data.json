@@ -1,0 +1,25 @@
+{
+    "last": {
+        "pair":"EURUSD",
+        "balance":5000,
+        "risk":1,
+        "stop_loss":3
+    },
+
+    "lang":"en"
+    ,
+
+    "update_time":"1695496748711"
+    ,
+
+    "pairs": {
+        "USDAUD": 1.547455,
+        "USDCAD": 1.345205,
+        "USDCHF": 0.905625,
+        "USDEUR": 0.938075,
+        "USDGBP": 0.815129,
+        "USDJPY": 148.080497,
+        "USDXAU": 0.000518,
+        "USDNZD": 1.671415
+    }
+}

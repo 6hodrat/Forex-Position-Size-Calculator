@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <link rel="icon" href="icon.png" sizes="64x64">
+    <title>Forex Position Size Calculator</title>
+</head>
+<body id="body">
+    <header>
+        <nav class="hc">
+            <span class="hbtn" id="update">Update</span>
+            <span class="hname">Forex Position Size Calculator</span>
+            <a href="settings.html"><span class="hbtn" id="settings">Settings</span></a>
+        </nav>
+        <div class="message" id="message"></div>
+    </header>
+    <div class="main">
+        <form class="co" >
+            <section name="sec">
+            <label for="pair"  id="lab_currency_pair">Currency Pair:</label>
+            <select id="pair" name="pair" class="inp">
+            </select>
+            </section>
+
+            
+            <section name="sec">
+            <label for="balance"  id="lab_account_balance">Account Balance:</label>
+            <input type="number" id="balance" name="balance" class="inp" placeholder="5000" value="5000">
+            </section>
+
+            <section name="sec">
+            <label for="risk"  id="lab_risk_pecentage">Risk Percentage:</label>
+            <input type="number" id="risk" name="risk" class="inp" placeholder="1">
+            </section>
+
+            <section name="sec">
+            <label for="stop_loss"  id="lab_stop_loss">Stop Loss (pips):</label>
+            <input type="number" id="stop_loss" name="stop_loss" class="inp" placeholder="2">
+            </section>
+            <section class="subbtng">
+            <input type="button" class="subbtn" value="Calculate" id="calculate">
+        </section>
+    </form>
+    <section name="sec">
+        <label class="res" id="lab_result_lot">Trade Size Per Lots:</label>
+        <label class="res" id="out_result_lot">0.00</label>
+</section>
+<section name="sec">
+    <label class="res" id="lab_result_risk">Risk Per Dollar:</label>
+    <label class="res" id="out_result_risk">0</label>
+</section>
+
+
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
