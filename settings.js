@@ -18,16 +18,18 @@ if(localStorage.getItem("mdata") === null){
 class Pairs_data{
     constructor(jdata=Jdata()){
         var pairs={};
-        var cur = ["USD"];
+        var cur = [];
         var m,i;
         for( m in jdata["pairs"]){
             cur =cur.concat(m[3]+m[4]+m[5]);
+            if (m[3]==="N"){
+                cur = cur.concat("USD")
+            }
         }
-        
-        for(m in cur){
-            m=cur[m]
-            for(i in cur){
-                i=cur[i]
+        for(i in cur){
+            i=cur[i]
+            for(m in cur){
+                m=cur[m]
                 if (i !== m){
                     var ip=1;
                     var mp=1;
@@ -37,12 +39,14 @@ class Pairs_data{
                     if (m !=="USD"){
                         mp =jdata["pairs"]["USD"+m]
                     }
-                    pairs[i+m]=mp/ip
+                    if (jdata["valid_pairs"].includes(i+m)){
+                        pairs[i+m]=mp/ip
+                    }
                 }
             }
         }
         this.pairs=pairs
-        
+
     }
 }
 

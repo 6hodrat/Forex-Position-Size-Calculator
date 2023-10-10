@@ -4,6 +4,8 @@
     "manifest_version": 3,
     "description": "It is a forex position size calculator that returns you the position size and the amount of money ($) at risk.",
 
+
+
     "icons":{
         "128":"icon.png",
         "48":"icon.png"

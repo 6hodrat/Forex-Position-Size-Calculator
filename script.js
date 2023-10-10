@@ -19,16 +19,18 @@ function Jdata(){
 class Pairs_data{
     constructor(jdata=Jdata()){
         var pairs={};
-        var cur = ["USD"];
+        var cur = [];
         var m,i;
         for( m in jdata["pairs"]){
             cur =cur.concat(m[3]+m[4]+m[5]);
+            if (m[3]==="N"){
+                cur = cur.concat("USD")
+            }
         }
-
-        for(m in cur){
-            m=cur[m]
-            for(i in cur){
-                i=cur[i]
+        for(i in cur){
+            i=cur[i]
+            for(m in cur){
+                m=cur[m]
                 if (i !== m){
                     var ip=1;
                     var mp=1;
@@ -38,7 +40,9 @@ class Pairs_data{
                     if (m !=="USD"){
                         mp =jdata["pairs"]["USD"+m]
                     }
-                    pairs[i+m]=mp/ip
+                    if (jdata["valid_pairs"].includes(i+m)){
+                        pairs[i+m]=mp/ip
+                    }
                 }
             }
         }
@@ -99,11 +103,22 @@ async function update(){
     document.getElementById("update").removeEventListener("click",update);
     two_language_msg("Updating...","در حال بروزرسانی٬٬٬")
     try{
+        datas = Jdata()
         const res = await fetch('https://raw.githubusercontent.com/6hodrat/global_updates/main/forex_position_size_calculator/data.json')
         if(res.ok){
-            let data = await res.json();
-            save_update(data)
+            let ndata = await res.json();
+            datas["pairs"]=ndata
+            
         }
+        const res1 = await fetch('https://raw.githubusercontent.com/6hodrat/global_updates/main/forex_position_size_calculator/valid_pairs.json')
+        if(res.ok){
+            let ndata = await res1.json();
+            datas["valid_pairs"]=ndata
+        }
+        datas["update_time"] =Date.now()
+        localStorage.clear()
+        localStorage.setItem("mdata",JSON.stringify(datas))
+        two_language_msg("Updated!","!بروز رسانی با موفقیت انجام شد")
     }
     catch (e){
         popup_msg.show_message(e,"error")
@@ -112,16 +127,7 @@ async function update(){
     }
 }
 
-// Stores new information received from GitHub in Localstorage
-function save_update(ndata){
-    datas = Jdata()
-    datas["pairs"]=ndata
-    datas["update_time"] =Date.now()
-    localStorage.clear()
-    localStorage.setItem("mdata",JSON.stringify(datas))
-    two_language_msg("Updated!","!بروز رسانی با موفقیت انجام شد")
 
-}
 
 // It displays pop-up messages for errors and...
 class Popup_msg{
@@ -241,7 +247,7 @@ function calculate(last=Jdata()["last"],pairs = pairs_data["pairs"]){
     var risk_per_dollar = balance*risk/100;
     if (("USD"+pair[3]+pair[4]+pair[5]) in Jdata()["pairs"]){
         var pip_value= 1/Number(Jdata()["pairs"]["USD"+pair[3]+pair[4]+pair[5]]) *10;
-
+        
     }
     else if((pair[3]+pair[4]+pair[5]) === "USD"){
         var pip_value= 10;
@@ -250,7 +256,10 @@ function calculate(last=Jdata()["last"],pairs = pairs_data["pairs"]){
         return;
     }
     var lot_size = risk_per_dollar/pip_value/stop_loss;
-
+    if (pair[3]+pair[4]+pair[5]==="JPY"){
+        lot_size = lot_size/10
+    }
+    
 
     document.getElementById("lab_result_lot").removeAttribute("class");
     document.getElementById("lab_result_risk").removeAttribute("class");

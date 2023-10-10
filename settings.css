@@ -57,13 +57,12 @@ a{
 }
 section{
     display:grid;
-    grid-template-columns: 250px 80px;
+    grid-template-columns: 250px auto;
     align-content: center;
     padding-left:10px;
     padding-right:10px;
     padding-bottom:5px;
     padding-top:5px;
-    
 }
 input{
     text-align: center;
