@@ -257,7 +257,7 @@ function calculate(last=Jdata()["last"],pairs = pairs_data["pairs"]){
     }
     var lot_size = risk_per_dollar/pip_value/stop_loss;
     if (pair[3]+pair[4]+pair[5]==="JPY"){
-        lot_size = lot_size/10
+        lot_size = lot_size/100
     }
     
 
